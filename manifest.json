@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "招行货币中间价",
+  "version": "1.0",
+  "description": "查看招商银行货币中间价",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "https://m.cmbchina.com/*"
+  ],
+  "host_permissions": [
+    "https://m.cmbchina.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/exchange.png",
+      "48": "images/exchange.png",
+      "128": "images/exchange.png"
+    }
+  },
+  "icons": {
+    "16": "images/exchange.png",
+    "48": "images/exchange.png",
+    "128": "images/exchange.png"
+  }
+} 
