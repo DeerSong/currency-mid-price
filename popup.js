@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(data => {
       const rateList = document.getElementById('rateList');
       
+      // 添加更新时间
+      const updateTimeDiv = document.createElement('div');
+      updateTimeDiv.className = 'update-time';
+      updateTimeDiv.textContent = `更新时间：${data.body.time}`;
+      
       // 创建表格
       const table = document.createElement('table');
       table.style.borderCollapse = 'collapse';
@@ -32,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const thead = document.createElement('thead');
       thead.innerHTML = `
         <tr>
-          <th style="border: 1px solid #ddd; padding: 8px;">币种</th>
-          <th style="border: 1px solid #ddd; padding: 8px;">中间价</th>
-          <th style="border: 1px solid #ddd; padding: 8px;">现汇买入</th>
-          <th style="border: 1px solid #ddd; padding: 8px;">现汇卖出</th>
-          <th style="border: 1px solid #ddd; padding: 8px;">现钞买入</th>
-          <th style="border: 1px solid #ddd; padding: 8px;">现钞卖出</th>
+          <th>币种</th>
+          <th>中间价</th>
+          <th>现汇买入</th>
+          <th>现汇卖出</th>
+          <th>现钞买入</th>
+          <th>现钞卖出</th>
         </tr>
       `;
       table.appendChild(thead);
@@ -47,19 +52,20 @@ document.addEventListener('DOMContentLoaded', function() {
       data.body.data.forEach(item => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td style="border: 1px solid #ddd; padding: 8px;">${item.ccyNbr}</td>
-          <td style="border: 1px solid #ddd; padding: 8px;">${item.rtbBid}</td>
-          <td style="border: 1px solid #ddd; padding: 8px;">${item.rthBid}</td>
-          <td style="border: 1px solid #ddd; padding: 8px;">${item.rthOfr}</td>
-          <td style="border: 1px solid #ddd; padding: 8px;">${item.rtcBid}</td>
-          <td style="border: 1px solid #ddd; padding: 8px;">${item.rtcOfr}</td>
+          <td>${item.ccyNbr}</td>
+          <td class="middle-rate">${item.rtbBid}</td>
+          <td>${item.rthBid}</td>
+          <td>${item.rthOfr}</td>
+          <td>${item.rtcBid}</td>
+          <td>${item.rtcOfr}</td>
         `;
         tbody.appendChild(row);
       });
       table.appendChild(tbody);
       
-      // 清空原有内容并添加表格
+      // 清空原有内容并添加更新时间和表格
       rateList.innerHTML = '';
+      rateList.appendChild(updateTimeDiv);
       rateList.appendChild(table);
     })
     .catch(error => {
@@ -71,7 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
           1. 网络连接问题<br>
           2. 请先访问招商银行网站以建立连接<br>
           3. 服务器暂时无响应<br>
-          <button onclick="window.location.reload()" style="margin-top: 10px;">重试</button>
+          <button onclick="window.location.reload()" 
+                  style="margin-top: 10px; 
+                         padding: 6px 12px; 
+                         border: none; 
+                         background: #1890ff; 
+                         color: white; 
+                         border-radius: 4px; 
+                         cursor: pointer;">
+            重试
+          </button>
         </div>
       `;
     });
