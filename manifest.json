@@ -4,8 +4,6 @@
   "version": "1.0",
   "description": "查看招商银行货币中间价",
   "permissions": [
-    "activeTab",
-    "scripting",
     "https://m.cmbchina.com/*"
   ],
   "host_permissions": [
@@ -14,14 +12,14 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "images/exchange.png",
-      "48": "images/exchange.png",
-      "128": "images/exchange.png"
+      "16": "images/exchange_128.png",
+      "48": "images/exchange_128.png",
+      "128": "images/exchange_128.png"
     }
   },
   "icons": {
-    "16": "images/exchange.png",
-    "48": "images/exchange.png",
-    "128": "images/exchange.png"
+    "16": "images/exchange_128.png",
+    "48": "images/exchange_128.png",
+    "128": "images/exchange_128.png"
   }
 } 
